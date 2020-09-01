@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+// Media queries
+$small: 360px;
+$phone: 620px; //max phone width or tablet portrait
+$tablet: 1050px; //tablet landscape max
+$laptop: 1200px; //laptops max
+
+@mixin small {
+  @media (max-width: #{$small}) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media (max-width: #{$phone}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (max-width: #{$laptop}) {
+    @content;
+  }
+}
+
+@mixin extra {
+  @media (min-width: #{$laptop}) {
+    @content;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: 'Satisfy', cursive;
+  padding: 18px 32px;
+  font-size: 1.3em;
+  letter-spacing: 1.1px;
+  color: white;
+  z-index: 10;
+
+  span {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #ddd;
+  }
+
+  span:nth-child(1) {
+    bottom: 8px;
+    left: 40%;
+  }
+  span:nth-child(2) {
+    bottom: 12px;
+    left: 50%;
+  }
+  span:nth-child(3) {
+    bottom: 8px;
+    left: 60%;
+  }
+  span:nth-child(4) {
+    width: 30%;
+    height: 4px;
+    top: 10px;
+    border-radius: 2px;
+    left: 35%;
+  }
+}
+
+#navigation {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 12px 18px;
+
+  @include phone {
+    flex-direction: column-reverse;
+    align-items: flex-end;
+  }
+
+  .toggle {
+    position: relative;
+    // margin-left: 16px;
+    cursor: pointer;
+
+    div {
+      width: 25px;
+      height: 4px;
+      border-radius: 2px;
+      background-color: white;
+      margin-top: 2px;
+      margin-bottom: 2px;
+      transition: all 0.3s ease;
+      transform-origin: left;
+    }
+
+    div:nth-child(1) {
+      transform: rotate(0) translateY(0);
+    }
+    div:nth-child(2) {
+      transform: translateX(0);
+    }
+    div:nth-child(3) {
+      transform: rotate(0) translateY(0);
+    }
+  }
+
+  .close {
+    div:nth-child(1) {
+      transform: rotate(405deg) translateY(-4px);
+    }
+    div:nth-child(2) {
+      background-color: transparent;
+      transform: translateX(-40px);
+    }
+    div:nth-child(3) {
+      transform: rotate(-405deg) translateY(4px);
+    }
+  }
+
+  .links {
+    transform: translateX(0);
+    opacity: 1;
+    transition: all 0.3s ease;
+    transition-delay: 0.1s;
+    display: flex;
+
+    @include phone {
+      flex-direction: column;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: white;
+      padding: 12px 18px;
+      // margin: 0 5px;
+      font-size: 1.3em;
+      letter-spacing: 1.2px;
+      box-sizing: border-box;
+      transition: all 0.4s ease;
+      position: relative;
+
+      span {
+        position: absolute;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background-color: transparent;
+        transition: all 0.5s ease;
+      }
+
+      span:first-child {
+        left: 0;
+      }
+      span:last-child {
+        right: 0;
+      }
+    }
+    .nav-link:hover {
+      span {
+        background-color: white;
+        width: 50%;
+      }
+    }
+
+    .active {
+      span {
+        background-color: white;
+        width: 50%;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .links-hidden {
+    transform: translateX(100px);
+    opacity: 0;
+
+    a {
+      pointer-events: none;
+    }
+  }
+}
+
+#hero {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background-image: url('../images/bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  .backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+
+  .cta {
+    text-decoration: none;
+    // width: 100%;
+    // text-align: center;
+    // margin-top: 150px;
+    font-size: 2em;
+    letter-spacing: 1.2px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 4px solid white;
+    color: white;
+    padding: 24px 32px;
+    border-radius: 15px;
+    transition: all 0.5s ease;
+    z-index: 10;
+  }
+
+  .cta:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}

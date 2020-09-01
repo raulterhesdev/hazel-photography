@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 
 // Media queries
@@ -46,18 +46,20 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  font-family: 'Nunito', sans-serif;
 }
 
 #logo {
   position: absolute;
-  top: 0;
-  left: 0;
   font-family: 'Satisfy', cursive;
-  padding: 18px 32px;
+  top: 7px;
+  left: 7px;
+  padding: 20px 28px;
   font-size: 1.3em;
   letter-spacing: 1.1px;
   color: white;
   z-index: 10;
+  text-decoration: none;
 
   span {
     position: absolute;
@@ -98,50 +100,54 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 12px 18px;
+  padding: 12px 24px;
+  overflow: hidden;
 
   @include phone {
     flex-direction: column-reverse;
     align-items: flex-end;
+    padding: 24px;
   }
 
-  .toggle {
-    position: relative;
-    // margin-left: 16px;
-    cursor: pointer;
+  @include phone {
+    .toggle {
+      position: relative;
+      margin-left: 16px;
+      cursor: pointer;
 
-    div {
-      width: 25px;
-      height: 4px;
-      border-radius: 2px;
-      background-color: white;
-      margin-top: 2px;
-      margin-bottom: 2px;
-      transition: all 0.3s ease;
-      transform-origin: left;
+      div {
+        width: 25px;
+        height: 4px;
+        border-radius: 2px;
+        background-color: white;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        transition: all 0.3s ease;
+        transform-origin: left;
+      }
+
+      div:nth-child(1) {
+        transform: rotate(0) translateY(0);
+      }
+      div:nth-child(2) {
+        transform: translateX(0);
+      }
+      div:nth-child(3) {
+        transform: rotate(0) translateY(0);
+      }
     }
 
-    div:nth-child(1) {
-      transform: rotate(0) translateY(0);
-    }
-    div:nth-child(2) {
-      transform: translateX(0);
-    }
-    div:nth-child(3) {
-      transform: rotate(0) translateY(0);
-    }
-  }
-
-  .close {
-    div:nth-child(1) {
-      transform: rotate(405deg) translateY(-4px);
-    }
-    div:nth-child(2) {
-      background-color: transparent;
-      transform: translateX(-40px);
-    }
-    div:nth-child(3) {
-      transform: rotate(-405deg) translateY(4px);
+    .close {
+      div:nth-child(1) {
+        transform: rotate(405deg) translateY(-4px);
+      }
+      div:nth-child(2) {
+        background-color: transparent;
+        transform: translateX(-40px);
+      }
+      div:nth-child(3) {
+        transform: rotate(-405deg) translateY(4px);
+      }
     }
   }
 
@@ -154,18 +160,26 @@ body {
 
     @include phone {
       flex-direction: column;
+      background-color: #017390cc;
+      padding: 7px 12px;
+      margin-top: 12px;
     }
 
     .nav-link {
       text-decoration: none;
       color: white;
       padding: 12px 18px;
-      // margin: 0 5px;
+      margin: 0 5px;
       font-size: 1.3em;
       letter-spacing: 1.2px;
       box-sizing: border-box;
       transition: all 0.4s ease;
       position: relative;
+
+      @include phone {
+        font-size: 1.1em;
+        margin: 5px;
+      }
 
       span {
         position: absolute;
@@ -200,11 +214,13 @@ body {
   }
 
   .links-hidden {
-    transform: translateX(100px);
-    opacity: 0;
+    @include phone {
+      transform: translateX(100px);
+      opacity: 0;
 
-    a {
-      pointer-events: none;
+      a {
+        pointer-events: none;
+      }
     }
   }
 }
@@ -229,27 +245,32 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
   }
 
   .cta {
     text-decoration: none;
-    // width: 100%;
-    // text-align: center;
-    // margin-top: 150px;
+    margin-top: 150px;
     font-size: 2em;
+    font-weight: bold;
     letter-spacing: 1.2px;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.7);
     border: 4px solid white;
     color: white;
     padding: 24px 32px;
-    border-radius: 15px;
+    border-radius: 5px;
     transition: all 0.5s ease;
     z-index: 10;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+
+    @include phone {
+      font-size: 1.4em;
+    }
   }
 
   .cta:hover {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.5);
   }
 }

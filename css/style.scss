@@ -45,7 +45,7 @@ $laptop: 1200px; //laptops max
 body {
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: 'Nunito', sans-serif;
 }
 
@@ -125,6 +125,7 @@ body {
   overflow: hidden;
 
   @include phone {
+    position: fixed;
     flex-direction: column;
     align-items: flex-end;
     padding: 0;
@@ -373,6 +374,53 @@ body {
 }
 
 .section {
-  background-color: salmon;
+  background-color: #eee;
   min-height: 100vh;
+  padding-top: 13vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  #filters {
+    border: 1px solid red;
+  }
+
+  #gallery {
+    border: 1px solid blue;
+
+    .gallery-image {
+      max-width: 200px;
+    }
+
+    .image-hidden {
+      display: none;
+    }
+  }
+
+  #modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50vw;
+    height: 50vh;
+    z-index: 500;
+    background-color: black;
+    display: none;
+
+    #close-modal {
+      color: white;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .modal-image {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .modal-image-hidden {
+      display: none;
+    }
+  }
 }

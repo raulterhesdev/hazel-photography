@@ -49,44 +49,65 @@ body {
   font-family: 'Nunito', sans-serif;
 }
 
-#logo {
+.logo-container {
   position: absolute;
-  font-family: 'Satisfy', cursive;
   top: 7px;
   left: 7px;
-  padding: 20px 28px;
-  font-size: 1.3em;
-  letter-spacing: 1.1px;
-  color: white;
   z-index: 10;
-  text-decoration: none;
+  padding: 20px 28px;
 
-  span {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: #ddd;
+  @include phone {
+    padding: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  span:nth-child(1) {
-    bottom: 8px;
-    left: 40%;
-  }
-  span:nth-child(2) {
-    bottom: 12px;
-    left: 50%;
-  }
-  span:nth-child(3) {
-    bottom: 8px;
-    left: 60%;
-  }
-  span:nth-child(4) {
-    width: 30%;
-    height: 4px;
-    top: 10px;
-    border-radius: 2px;
-    left: 35%;
+  #logo {
+    font-family: 'Satisfy', cursive;
+    font-size: 1.3em;
+    letter-spacing: 1.1px;
+    color: white;
+    text-decoration: none;
+
+    @include phone {
+      padding: 20px 28px;
+    }
+
+    span {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #ddd;
+    }
+
+    span:nth-child(1) {
+      bottom: 8px;
+      left: 40%;
+    }
+    span:nth-child(2) {
+      bottom: 12px;
+      left: 50%;
+    }
+    span:nth-child(3) {
+      bottom: 8px;
+      left: 60%;
+    }
+    span:nth-child(4) {
+      width: 30%;
+      height: 4px;
+      top: 10px;
+      border-radius: 2px;
+      left: 35%;
+
+      @include phone {
+        width: 14%;
+        left: 43%;
+      }
+    }
   }
 }
 
@@ -165,7 +186,7 @@ body {
 
     @include phone {
       flex-direction: column;
-      background-color: rgba(209, 116, 56, 0.7);
+      background-color: rgba(209, 116, 56, 1);
       padding: 7px 12px;
     }
 
@@ -249,7 +270,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.2);
     z-index: 1;
   }
 
@@ -263,6 +284,9 @@ body {
     z-index: 15;
     color: #eee;
     position: relative;
+    text-shadow: 4px 4px 10px rgba(152, 72, 21, 0.4);
+    box-shadow: 4px 4px 10px rgba(152, 72, 21, 0);
+    transition: all 0.6s ease;
 
     span {
       position: absolute;
@@ -304,21 +328,28 @@ body {
         background-color: white;
       }
       span:nth-child(1) {
-        width: 50%;
+        box-shadow: 4px 4px 10px rgba(152, 72, 21, 0.3);
+        width: 30%;
       }
       span:nth-child(2) {
-        width: 50%;
+        box-shadow: 4px 4px 10px rgba(152, 72, 21, 0.3);
+        width: 30%;
       }
       span:nth-child(3) {
-        height: 50%;
+        box-shadow: 4px 4px 10px rgba(152, 72, 21, 0.3);
+        height: 70%;
       }
       span:nth-child(4) {
-        height: 50%;
+        box-shadow: 4px 4px 10px rgba(152, 72, 21, 0.3);
+        height: 80%;
       }
     }
   }
 
   .cta:hover {
+    text-shadow: 4px 4px 10px rgba(152, 72, 21, 0);
+    box-shadow: 4px 4px 10px rgba(152, 72, 21, 0.3);
+    transition-delay: 0.9s;
     span {
       background-color: white;
     }
@@ -339,4 +370,9 @@ body {
       transition-delay: 0s;
     }
   }
+}
+
+.section {
+  background-color: salmon;
+  min-height: 100vh;
 }

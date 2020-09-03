@@ -10,7 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const modal = document.querySelector('#modal');
   const closeModal = document.querySelector('#close-modal');
 
-  const filterImages = (filter) => {
+  const filterImages = (e) => {
+    document.querySelectorAll('.filter-element').forEach((element) => {
+      element.classList.remove('filter-active');
+    });
+    e.target.classList.add('filter-active');
+
+    const filter = e.target.id;
+
     const images = document.querySelectorAll('.gallery-image');
     images.forEach((image) => {
       if (image.dataset.category !== filter && filter !== 'all') {
@@ -35,15 +42,19 @@ document.addEventListener('DOMContentLoaded', () => {
         img.classList.add('modal-image-show');
       }
     });
-    modal.style.display = 'block';
+    modal.classList.remove('remove-modal');
+    modal.classList.add('show-modal');
   };
 
   categories.forEach((element) => {
     const domElement = document.createElement('p');
     domElement.innerHTML = element.name;
     domElement.classList.add('filter-element');
+    if (element.name === 'All') {
+      domElement.classList.add('filter-active');
+    }
     domElement.id = element.filter;
-    domElement.addEventListener('click', (e) => filterImages(e.target.id));
+    domElement.addEventListener('click', (e) => filterImages(e));
     filters.appendChild(domElement);
   });
 
@@ -60,10 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
     modalImage.src = `images/${element.url}`;
     modalImage.classList = 'modal-image modal-image-hidden';
     modalImage.dataset.id = element.id;
-    modal.appendChild(modalImage);
+    modal.prepend(modalImage);
   });
 
   closeModal.addEventListener('click', () => {
-    modal.style.display = 'none';
+    modal.classList.remove('show-modal');
+    modal.classList.add('remove-modal');
   });
 });

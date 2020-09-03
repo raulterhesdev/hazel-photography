@@ -68,6 +68,7 @@ body {
   #logo {
     font-family: 'Satisfy', cursive;
     font-size: 1.3em;
+
     letter-spacing: 1.1px;
     color: white;
     text-decoration: none;
@@ -81,7 +82,7 @@ body {
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background-color: #ddd;
+      background-color: white;
     }
 
     span:nth-child(1) {
@@ -107,6 +108,16 @@ body {
         width: 14%;
         left: 43%;
       }
+    }
+  }
+}
+
+.inverted-logo {
+  #logo {
+    color: #c06322;
+
+    span {
+      background-color: #c06322;
     }
   }
 }
@@ -143,7 +154,7 @@ body {
         width: 25px;
         height: 4px;
         border-radius: 2px;
-        background-color: white;
+        background-color: rgba(209, 116, 56, 1);
         margin-top: 2px;
         margin-bottom: 2px;
         transition: all 0.3s ease;
@@ -160,7 +171,7 @@ body {
         transform: rotate(0) translateY(0);
       }
       @include phone {
-        padding: 24px;
+        padding: 18px;
       }
     }
 
@@ -235,6 +246,42 @@ body {
         background-color: white;
         width: 50%;
         font-weight: bold;
+      }
+    }
+
+    .link-inverted {
+      color: rgba(0, 0, 0, 0.8);
+
+      span {
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+
+      @include phone {
+        color: white;
+        span {
+          background-color: white;
+        }
+      }
+    }
+
+    .link-inverted:hover {
+      span {
+        background-color: #c06322cc;
+      }
+    }
+
+    .active-inverted {
+      color: #c06322;
+      span {
+        background-color: #c06322;
+        width: 50%;
+        font-weight: bold;
+      }
+      @include phone {
+        color: white;
+        span {
+          background-color: white;
+        }
       }
     }
   }
@@ -374,22 +421,59 @@ body {
 }
 
 .section {
-  background-color: #eee;
+  background-color: #ddd;
   min-height: 100vh;
-  padding-top: 13vh;
+  padding-top: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   #filters {
-    border: 1px solid red;
+    min-width: 300px;
+    max-width: 700px;
+    padding: 12px;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    .filter-element {
+      padding: 12px 24px;
+      color: white;
+      border-radius: 24px;
+      margin: 4px;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+    .filter-element:hover {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .filter-active {
+      background-color: #c06322;
+    }
   }
 
   #gallery {
-    border: 1px solid blue;
+    width: 90%;
+    margin: 0 auto;
+    column-count: 4;
+    column-gap: 0.5em;
+
+    @include tablet {
+      column-count: 3;
+    }
+    @include phone {
+      column-count: 2;
+    }
+    @include small {
+      column-count: 1;
+    }
 
     .gallery-image {
-      max-width: 200px;
+      display: inline-block;
+      margin: 0 0 0.5em;
+      width: 100%;
     }
 
     .image-hidden {
@@ -398,29 +482,49 @@ body {
   }
 
   #modal {
-    position: absolute;
-    top: 0;
+    position: fixed;
     left: 0;
-    width: 50vw;
-    height: 50vh;
+    width: 100vw;
+    height: 100vh;
     z-index: 500;
-    background-color: black;
-    display: none;
+
+    // transition: top 0.5s ease-in, left 0.5s ease-in, opacity 0.5s ease-in 0.5s,
+    //   background-color 0.5s ease-in 0.5s;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 
     #close-modal {
       color: white;
-      position: absolute;
-      top: 0;
-      right: 0;
+      padding: 4px 12px;
+      font-size: 30px;
+      background-color: rgba(0, 0, 0, 0.8);
     }
-
     .modal-image {
-      max-width: 100%;
-      max-height: 100%;
+      max-width: 80vw;
+      max-height: 80vh;
     }
 
     .modal-image-hidden {
       display: none;
     }
+  }
+
+  .remove-modal {
+    top: -100%;
+    width: 0%;
+    background-color: rgba(0, 0, 0, 0);
+
+    transition: top 0.5s ease-in, left 0.5s ease-in, opacity 0.5s ease-in 0.5s,
+      background-color 0s;
+  }
+
+  .show-modal {
+    transition: top 0.5s ease-in, left 0.5s ease-in,
+      background-color 0.2s ease-in 0.4s;
+    top: 0;
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.4);
   }
 }

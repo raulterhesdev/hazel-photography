@@ -424,6 +424,7 @@ body {
   background-color: #ddd;
   min-height: 100vh;
   padding-top: 10vh;
+  padding-bottom: 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -580,7 +581,7 @@ body {
           padding: 4px 12px;
           position: relative;
 
-          span:first-child {
+          span {
             position: absolute;
             top: 4px;
             left: 4px;
@@ -590,6 +591,94 @@ body {
             background-color: #c06322;
           }
         }
+      }
+    }
+  }
+}
+
+.section {
+  .contact-title {
+    margin-top: 32px;
+    color: #c06322;
+  }
+
+  #form {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    width: 90%;
+    max-width: 640px;
+    margin: 0 auto;
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      margin: 12px;
+
+      label {
+        font-size: 1.3em;
+        color: rgba(0, 0, 0, 0.8);
+        padding: 4px 12px;
+        span {
+          position: absolute;
+          top: 6px;
+          left: 4px;
+          width: 4px;
+          height: 10px;
+          border-radius: 2px;
+          background-color: #c06322;
+        }
+      }
+
+      input,
+      textarea {
+        border: 1px solid rgba(256, 256, 256, 0.6);
+        background-color: rgba(256, 256, 256, 0.6);
+        outline: none;
+        font-size: 1em;
+        border-radius: 5px;
+        padding: 12px 18px;
+        transition: all 0.3s ease;
+      }
+
+      input:focus,
+      textarea:focus {
+        border: 1px solid #c06322;
+      }
+
+      .input-error {
+        border: 1px solid red;
+      }
+
+      .error {
+        padding: 4px;
+        color: red;
+        transition: all 0.4s ease;
+      }
+    }
+
+    .button-container {
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .main-button {
+        width: 80%;
+        padding: 12px 16px;
+        font-size: 1.2em;
+        border: none;
+        background-color: #c06322;
+        color: white;
+        transition: all 0.4s ease;
+        border-radius: 5px;
+        outline: none;
+      }
+
+      .main-button:hover,
+      .main-button:active {
+        background-color: rgb(184, 84, 13);
       }
     }
   }

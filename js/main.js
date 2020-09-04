@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('done');
   document.querySelector('.toggle').addEventListener('click', (e) => {
     e.currentTarget.classList.toggle('close');
     document.querySelector('.links').classList.toggle('links-hidden');
@@ -74,8 +73,16 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.prepend(modalImage);
   });
 
-  closeModal.addEventListener('click', () => {
+  const dismissModal = () => {
     modal.classList.remove('show-modal');
     modal.classList.add('remove-modal');
+  };
+
+  closeModal.addEventListener('click', dismissModal);
+
+  modal.addEventListener('click', (e) => {
+    if (e.target.id === 'modal') {
+      dismissModal();
+    }
   });
 });

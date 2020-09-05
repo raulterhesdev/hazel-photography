@@ -372,6 +372,7 @@ body {
     }
 
     @include phone {
+      font-size: 1.5em;
       span {
         background-color: white;
       }
@@ -391,6 +392,10 @@ body {
         box-shadow: 4px 4px 10px rgba(152, 72, 21, 0.3);
         height: 80%;
       }
+    }
+
+    @include small {
+      font-size: 1.2em;
     }
   }
 
@@ -445,29 +450,27 @@ body {
       border-radius: 24px;
       margin: 4px;
       background-color: rgba(0, 0, 0, 0.4);
+      cursor: pointer;
     }
     .filter-element:hover {
       background-color: rgba(0, 0, 0, 0.6);
     }
 
     .filter-active {
-      background-color: #c06322;
+      background-color: #c06322 !important;
     }
   }
 
   #gallery {
     width: 90%;
     margin: 0 auto;
-    column-count: 4;
+    column-count: 3;
     column-gap: 0.5em;
 
     @include tablet {
-      column-count: 3;
-    }
-    @include phone {
       column-count: 2;
     }
-    @include small {
+    @include phone {
       column-count: 1;
     }
 
@@ -475,6 +478,11 @@ body {
       display: inline-block;
       margin: 0 0 0.5em;
       width: 100%;
+      cursor: pointer;
+    }
+
+    .gallery-image:hover {
+      opacity: 0.8;
     }
 
     .image-hidden {
@@ -537,22 +545,27 @@ body {
     height: 100%;
     justify-content: center;
 
+    @include laptop {
+      width: 80%;
+    }
+
     @include tablet {
       margin-top: 5vh;
     }
     @include phone {
-      width: 96%;
+      width: 100%;
+      margin-top: 3vh;
     }
 
     .tab {
       background-color: rgba(256, 256, 256, 0.1);
-      border-radius: 10px;
-      box-shadow: 2px 2px 15px rgba(192, 99, 34, 0.2);
+      border-radius: 5px;
+      box-shadow: 4px 4px 15px rgba(192, 99, 34, 0.2);
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 36px 24px;
-      margin: 26px 16px;
+      margin: 26px;
       color: white;
 
       .title {
@@ -564,6 +577,11 @@ body {
 
       .image {
         opacity: 0.6;
+
+        @include phone {
+          width: 64px;
+          height: 64px;
+        }
       }
 
       .list {
@@ -580,6 +598,9 @@ body {
           text-align: center;
           padding: 4px 12px;
           position: relative;
+          @include phone {
+            font-size: 0.9em;
+          }
 
           span {
             position: absolute;
@@ -605,7 +626,7 @@ body {
   #form {
     display: flex;
     flex-direction: column;
-    padding: 24px;
+    padding: 24px 12px;
     width: 90%;
     max-width: 640px;
     margin: 0 auto;
@@ -628,6 +649,10 @@ body {
           height: 10px;
           border-radius: 2px;
           background-color: #c06322;
+        }
+
+        @include phone {
+          font-size: 1.1em;
         }
       }
 
@@ -682,4 +707,12 @@ body {
       }
     }
   }
+}
+
+footer {
+  background-color: rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 18px 40px;
+  font-size: 1em;
+  color: #c06322aa;
 }

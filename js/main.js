@@ -57,6 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
     filters.appendChild(domElement);
   });
 
+  images.sort(() => 0.5 - Math.random());
+
   images.forEach((element) => {
     const image = document.createElement('img');
     image.src = `images/${element.url}`;

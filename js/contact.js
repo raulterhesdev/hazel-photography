@@ -59,7 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
       var template_id = 'template_hWGS0MWW';
 
       // emailjsUser;
-      emailjs.send(service_id, template_id, template_params, emailjsUser);
+      // const user = emailjsUser; //Dev use with local api key
+      const user = process.env.EMAIL_JS_USER;
+      emailjs.send(service_id, template_id, template_params, user);
     }
   }
 
